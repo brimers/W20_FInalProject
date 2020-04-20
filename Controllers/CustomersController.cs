@@ -46,5 +46,12 @@ namespace FinalProject_StephenBrimer.Controllers
         {
             return View();
         }
+
+        public IActionResult ViewOrder()
+        {
+            return View();
+        }
+
+
     }
 }
