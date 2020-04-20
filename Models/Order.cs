@@ -15,8 +15,6 @@ namespace FinalProject_StephenBrimer.Models
 
         public List<Service> Services { get; set; }
 
-        public int OrderNumber { get; set; }
-
-        public string AddNote { get; set; }
+       public string AddNote { get; set; }
     }
 }

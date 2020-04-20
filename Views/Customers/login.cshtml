@@ -1,0 +1,29 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Customer Login";
+}
+
+<h1>Customer Login</h1>
+
+<form asp-action="SaveCust">
+    <div @*class="text-center ul-no-bull"*@ asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" type="text" class="form-control">
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email address</label>
+        <input asp-for="Email" type="email" class="form-control">
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone">Phone Number</label>
+        <input asp-for="Phone" type="text" class="form-control">
+
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
