@@ -39,15 +39,16 @@ namespace FinalProject_StephenBrimer.Controllers
 
             _dbContext.SaveChanges();
 
-            return View("BookAppt");
+            return View("BookCar");
         }
 
-        public IActionResult BookAppt()
-        {
+        public IActionResult SaveCar(Car car
+        )
+            {
             return View();
         }
 
-        public IActionResult ViewOrder()
+        public IActionResult BookService()
         {
             return View();
         }

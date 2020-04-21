@@ -16,5 +16,7 @@ namespace FinalProject_StephenBrimer.Models
 
         public double ServicePrice { get; set; }
 
+
+
     }
 }

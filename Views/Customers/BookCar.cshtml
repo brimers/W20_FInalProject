@@ -1,0 +1,61 @@
+﻿@using Newtonsoft.Json
+@model Car
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Customer Appointment Wizard";
+}
+
+<h1>Car Description</h1>
+
+<form asp-action="SaveCar">
+    <div @*class="text-center ul-no-bull"*@ asp-validation-summary="All"></div>
+    @*year*@
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Year</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                @for (int i = 2020; i >= 1970; i--)
+                {
+                    <option asp-for="Year" value="@i">@i</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        @*make*@
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Make</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option asp-for="Make" value="Toyota">Toyota</option>
+                <option asp-for="Make" value="Honda">Honda</option>
+                <option asp-for="Make" value="Ford">Ford</option>
+            </select>
+        </div>
+    </div>
+    @*model*@
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Model</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option asp-for="Model" value="Compact">Compact</option>
+            <option asp-for="Model" value="Sedan">Sedan</option>
+            <option asp-for="Model" value="SUV">SUV</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mileage">Car Mileage:</label>
+        <input asp-for="Mileage" type="text" class="form-control"> 
+    </div>
+    <input type="hidden" name="customerId" value="@ViewBag.CustomerId" />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

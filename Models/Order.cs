@@ -16,5 +16,7 @@ namespace FinalProject_StephenBrimer.Models
         public List<Service> Services { get; set; }
 
        public string AddNote { get; set; }
+
+       public Car Car { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using FinalProject_StephenBrimer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject_StephenBrimer.Migrations
 {
     [DbContext(typeof(Database))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20200420182620_Added Car to Order Class")]
+    partial class AddedCartoOrderClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace FinalProject_StephenBrimer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Make")
                         .IsRequired()
@@ -44,8 +43,6 @@ namespace FinalProject_StephenBrimer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
-
                     b.ToTable("Cars");
                 });
 
@@ -55,6 +52,9 @@ namespace FinalProject_StephenBrimer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CarId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -69,6 +69,8 @@ namespace FinalProject_StephenBrimer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId");
 
                     b.ToTable("Customers");
                 });
@@ -127,17 +129,17 @@ namespace FinalProject_StephenBrimer.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("FinalProject_StephenBrimer.Models.Car", b =>
+            modelBuilder.Entity("FinalProject_StephenBrimer.Models.Customer", b =>
                 {
-                    b.HasOne("FinalProject_StephenBrimer.Models.Customer", "Customer")
+                    b.HasOne("FinalProject_StephenBrimer.Models.Car", "Car")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CarId");
                 });
 
             modelBuilder.Entity("FinalProject_StephenBrimer.Models.Order", b =>
                 {
                     b.HasOne("FinalProject_StephenBrimer.Models.Car", "Car")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CarId");
 
                     b.HasOne("FinalProject_StephenBrimer.Models.Customer", "Customer")
